@@ -1,0 +1,78 @@
+/* RSS news display wordpress plugin */
+/* http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/ */
+
+
+/*CSS for setting 1*/
+#rssnewssetting1 {
+	border: 0px solid #bdc7d8;
+	width:100%;
+	vertical-align:middle;
+}
+#rssnewssetting1 p {
+	width:100%;
+	vertical-align:middle;
+	padding-top:5px;
+}
+/*CSS for setting 1*/
+
+
+/*CSS for setting 2*/
+#rssnewssetting2 {
+	border: 1px solid #DDDDEE;
+	width:100%;
+	vertical-align:middle;
+}
+#rssnewssetting2 p {
+	width:100%;
+	vertical-align:middle;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	background-color:#DDDDEE;
+}
+/*CSS for setting 2*/
+
+
+/*CSS for setting 3*/
+#rssnewssetting3 {
+	border: 1px solid #FF9900;
+	height: 30px;
+	width:100%;
+	vertical-align:middle;
+}
+#rssnewssetting3 p {
+	width:100%;
+	vertical-align:middle;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+}
+/*CSS for setting 3*/
+
+
+/*CSS for setting 4*/
+#rssnewssetting4 {
+	border: 0px solid #bdc7d8;
+	width:100%;
+	vertical-align:middle;
+}
+#rssnewssetting4 p {
+	width:100%;
+	vertical-align:middle;
+	padding-top:5px;
+}
+/*CSS for setting 4*/
+
+
+/*CSS for setting 5*/
+#rssnewssetting5 {
+	border: 0px solid #bdc7d8;
+	width:100%;
+	vertical-align:middle;
+}
+#rssnewssetting5 p {
+	width:100%;
+	vertical-align:middle;
+	padding-top:5px;
+}
+/*CSS for setting 5*/
