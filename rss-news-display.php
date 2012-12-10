@@ -5,7 +5,7 @@ Plugin Name: Rss news display
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Description: RSS news display is a simple plug-in to show the RSS title with cycle jQuery script. This plug-in retrieve the title and corresponding links from the given RSS feed and setup the news display in the website. Its display one title at a time and cycle all the remaining title in the mentioned location. and we have option to set four different cycle left to right, right to left, down to up, up to down. using this plugin we can easily setup the news display under top menu or footer. the plug-in have separate CSS file to configure the style.
 Author: Gopi.R
-Version: 6.0
+Version: 6.1
 Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags: RSS, news, display, wordpress, plugin
@@ -50,8 +50,8 @@ function RssNewsDisplay($setting)
 	?>
 	</div>
     <script type="text/javascript">
-    $(function() {
-	$('#rssnewssetting<?php echo $setting; ?>').cycle({
+    jQuery(function() {
+	jQuery('#rssnewssetting<?php echo $setting; ?>').cycle({
 		fx: 'scroll<?php echo @$slider; ?>',
 		speed: 700,
 		timeout: 5000
@@ -191,7 +191,7 @@ function rssnews_admin_options()
 	?>
 	<h2>Plugin configuration</h2>
     <ul>
-    <li>Short code option for pages and post</li>
+    	<li>Short code option for pages and post</li>
     </ul>
 	Check official website for live demo <a href="http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/" target="_blank">click here</a>
     <?php
@@ -230,8 +230,8 @@ function rssnews_shortcode( $atts )
 
 	$rssnews = $rssnews . '</div>';
 	$rssnews = $rssnews . '<script type="text/javascript">';
-    $rssnews = $rssnews . '$(function() {';
-	$rssnews = $rssnews . "$('#rssnewssetting".$setting."').cycle({fx: 'scroll".$slider."',speed: 700,timeout: 5000";
+    $rssnews = $rssnews . 'jQuery(function() {';
+	$rssnews = $rssnews . "jQuery('#rssnewssetting".$setting."').cycle({fx: 'scroll".$slider."',speed: 700,timeout: 5000";
 	$rssnews = $rssnews . '});';
 	$rssnews = $rssnews . '});';
 	$rssnews = $rssnews . '</script>';
@@ -259,7 +259,7 @@ function rssnews_add_javascript_files()
 {
 	if (!is_admin())
 	{
-		wp_enqueue_script( 'jquery-1.3.2.min', get_option('siteurl').'/wp-content/plugins/rss-news-display/js/jquery-1.3.2.min.js');
+		wp_enqueue_script( 'jquery');
 		wp_enqueue_script( 'jquery.cycle.all.min', get_option('siteurl').'/wp-content/plugins/rss-news-display/js/jquery.cycle.all.min.js');
 		wp_enqueue_style( 'rss-news-display.css', get_option('siteurl').'/wp-content/plugins/rss-news-display/rss-news-display.css');
 	}	

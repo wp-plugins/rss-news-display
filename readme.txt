@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-
 Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags:  RSS, display, wordpress, plugin
-Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 6.0
+Requires at least: 3.3
+Tested up to: 3.5
+Stable tag: 6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -87,6 +87,10 @@ New demo link, www.gopiplus.com
 
 Tested up to 3.4.2
 
+= 6.1 =
+
+Tested up to 3.5
+
 == Changelog ==
 
 = 1.0 =
@@ -114,3 +118,7 @@ New demo link, www.gopiplus.com
 = 6.0 =
 
 Tested up to 3.4.2
+
+= 6.1 =
+
+Tested up to 3.5
