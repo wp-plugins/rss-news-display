@@ -90,6 +90,8 @@ Tested up to 3.4.2
 = 6.1 =
 
 Tested up to 3.5
+Avoid registering the alternate jQuery.
+From this version we are using existing wordpress jQuery.
 
 == Changelog ==
 
@@ -122,3 +124,5 @@ Tested up to 3.4.2
 = 6.1 =
 
 Tested up to 3.5
+Avoid registering the alternate jQuery.
+From this version we are using existing wordpress jQuery.
