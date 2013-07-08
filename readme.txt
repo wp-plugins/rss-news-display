@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-p
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags:  RSS, display, wordpress, plugin
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 6.1
+Tested up to: 3.6
+Stable tag: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -93,6 +93,12 @@ Tested up to 3.5
 Avoid registering the alternate jQuery.
 From this version we are using existing wordpress jQuery.
 
+= 7.0 =
+
+Tested up to 3.6
+Added few security features.
+New admin layout.
+
 == Changelog ==
 
 = 1.0 =
@@ -126,3 +132,9 @@ Tested up to 3.4.2
 Tested up to 3.5
 Avoid registering the alternate jQuery.
 From this version we are using existing wordpress jQuery.
+
+= 7.0 =
+
+Tested up to 3.6
+Added few security features.
+New admin layout.
