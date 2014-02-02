@@ -1,11 +1,10 @@
 <?php
-
 /*
 Plugin Name: Rss news display
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Description: RSS news display is a simple plug-in to show the RSS title with cycle jQuery script. This plug-in retrieve the title and corresponding links from the given RSS feed and setup the news display in the website. Its display one title at a time and cycle all the remaining title in the mentioned location. and we have option to set four different cycle left to right, right to left, down to up, up to down. using this plugin we can easily setup the news display under top menu or footer. the plug-in have separate CSS file to configure the style.
 Author: Gopi.R
-Version: 7.0
+Version: 7.1
 Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags: RSS, news, display, wordpress, plugin
@@ -27,39 +26,47 @@ function RssNewsDisplay($setting)
 	<?php
 	$xml = "";
 	$cnt=0;
-	$f = fopen( $rss, 'r' );
-	while( $data = fread( $f, 4096 ) ) { $xml .= $data; }
-	fclose( $f );
-	preg_match_all( "/\<item\>(.*?)\<\/item\>/s", $xml, $itemblocks );
-	if ( ! empty($itemblocks) ) 
-	{
-		foreach( $itemblocks[1] as $block )
-		{ 
-			preg_match_all( "/\<title\>(.*?)\<\/title\>/",  $block, $title );
-			preg_match_all( "/\<link\>(.*?)\<\/link\>/", $block, $link );
-			
-			$rssnews_title = $title[1][0];
-			$rssnews_title = mysql_real_escape_string(trim($rssnews_title));
-			$rssnews_link = $link[1][0];
-			$rssnews_link = trim($rssnews_link);
-			?>
-            <p><a target="_blank" href="<?php echo $rssnews_link; ?>"><?php echo $rssnews_title; ?></a></p>
-			<?php 
+	$content = @file_get_contents($rss);
+	if (strpos($http_response_header[0], "200")) 
+	{ 
+		$f = fopen( $rss, 'r' );
+		while( $data = fread( $f, 4096 ) ) { $xml .= $data; }
+		fclose( $f );
+		preg_match_all( "/\<item\>(.*?)\<\/item\>/s", $xml, $itemblocks );
+		if ( ! empty($itemblocks) ) 
+		{
+			foreach( $itemblocks[1] as $block )
+			{ 
+				preg_match_all( "/\<title\>(.*?)\<\/title\>/",  $block, $title );
+				preg_match_all( "/\<link\>(.*?)\<\/link\>/", $block, $link );
+				
+				$rssnews_title = $title[1][0];
+				$rssnews_title = mysql_real_escape_string(trim($rssnews_title));
+				$rssnews_link = $link[1][0];
+				$rssnews_link = trim($rssnews_link);
+				?>
+				<p><a target="_blank" href="<?php echo $rssnews_link; ?>"><?php echo $rssnews_title; ?></a></p>
+				<?php 
+			}
 		}
+		?>
+		</div>
+		<script type="text/javascript">
+		jQuery(function() {
+		jQuery('#rssnewssetting<?php echo $setting; ?>').cycle({
+			fx: 'scroll<?php echo @$slider; ?>',
+			speed: 700,
+			timeout: 5000
+		});
+		});
+		</script>
+		<!-- end rssnewssetting -->
+		<?php
 	}
-	?>
-	</div>
-    <script type="text/javascript">
-    jQuery(function() {
-	jQuery('#rssnewssetting<?php echo $setting; ?>').cycle({
-		fx: 'scroll<?php echo @$slider; ?>',
-		speed: 700,
-		timeout: 5000
-	});
-	});
-	</script>
-    <!-- end rssnewssetting -->
-    <?php
+	else
+	{
+		_e('RSS url is invalid or broken', 'rss-news-display');
+	}
 }
 
 # Plugin helper
@@ -112,7 +119,6 @@ function rssnews_install()
 # Admin update option for default value
 function rssnews_admin_options() 
 {
-	
 	?>
 	<div class="wrap">
 	<div class="form-wrap">
@@ -129,7 +135,7 @@ function rssnews_admin_options()
 	$rssnews_direction4 = get_option('rssnews_direction4');
 	$rssnews_direction5 = get_option('rssnews_direction5');
 
-	if (@$_POST['rssnews_submit']) 
+	if (isset($_POST['rssnews_submit'])) 
 	{
 		check_admin_referer('rssnews_form_setting');
 		
@@ -157,92 +163,93 @@ function rssnews_admin_options()
 		
 		?>
 		<div class="updated fade">
-			<p><strong>Details successfully updated.</strong></p>
+			<p><strong><?php _e('Details successfully updated.', 'rss-news-display'); ?></strong></p>
 		</div>
 		<?php
 	}
 	?>
-	<h2>Rss news display</h2>
+	<h2><?php _e('Rss news display', 'rss-news-display'); ?></h2>
 	<form name="rssnews_form" method="post" action="">
-	<h3>Setting 1</h3>
-	<label for="tag-title">Rss link</label>
+	<h3><?php _e('Setting 1', 'rss-news-display'); ?></h3>
+	<label for="tag-title"><?php _e('Rss link', 'rss-news-display'); ?></label>
 	<input name="rssnews_rss1" type="text" id="rssnews_rss1" value="<?php echo $rssnews_rss1; ?>" size="125" maxlength="200" />
-	<p>Enter your rss link in this box. (This is used for widget)</p>
-	<label for="tag-title">Slider direction</label>
+	<p><?php _e('Enter your rss link in this box. (For widget)', 'rss-news-display'); ?> (Example: http://www.gopiplus.com/extensions/feed)</p>
+	<label for="tag-title"><?php _e('Slider direction', 'rss-news-display'); ?></label>
 	<select name="rssnews_direction1" id="rssnews_direction1">
         <option value='Left' <?php if($rssnews_direction1 == 'Left') { echo 'selected' ; } ?>>Left</option>
         <option value='Right' <?php if($rssnews_direction1 == 'Right') { echo 'selected' ; } ?>>Right</option>
         <option value='Up' <?php if($rssnews_direction1 == 'Up') { echo 'selected' ; } ?>>Up</option>
         <option value='Down' <?php if($rssnews_direction1 == 'Down') { echo 'selected' ; } ?>>Down</option>
       </select>
-	<p>Select your scroll direction</p>
+	<p><?php _e('Select your scroll direction', 'rss-news-display'); ?></p>
 	
-	<h3>Setting 2</h3>
-	<label for="tag-title">Rss link</label>
+	<h3><?php _e('Setting 2', 'rss-news-display'); ?></h3>
+	<label for="tag-title"><?php _e('Rss link', 'rss-news-display'); ?></label>
 	<input name="rssnews_rss2" type="text" id="rssnews_rss2" value="<?php echo $rssnews_rss2; ?>" size="125" maxlength="200" />
-	<p>Enter your rss link in this box.</p>
-	<label for="tag-title">Slider direction</label>
+	<p><?php _e('Enter your rss link in this box.', 'rss-news-display'); ?> (Example: http://www.gopiplus.com/extensions/feed)</p>
+	<label for="tag-title"><?php _e('Slider direction', 'rss-news-display'); ?></label>
 	<select name="rssnews_direction2" id="rssnews_direction2">
         <option value='Left' <?php if($rssnews_direction2 == 'Left') { echo 'selected' ; } ?>>Left</option>
         <option value='Right' <?php if($rssnews_direction2 == 'Right') { echo 'selected' ; } ?>>Right</option>
         <option value='Up' <?php if($rssnews_direction2 == 'Up') { echo 'selected' ; } ?>>Up</option>
         <option value='Down' <?php if($rssnews_direction2 == 'Down') { echo 'selected' ; } ?>>Down</option>
       </select>
-	<p>Select your scroll direction</p>
+	<p><?php _e('Select your scroll direction', 'rss-news-display'); ?></p>
 	
-	<h3>Setting 3</h3>
-	<label for="tag-title">Rss link</label>
+	<h3><?php _e('Setting 3', 'rss-news-display'); ?></h3>
+	<label for="tag-title"><?php _e('Rss link', 'rss-news-display'); ?></label>
 	<input name="rssnews_rss3" type="text" id="rssnews_rss3" value="<?php echo $rssnews_rss3; ?>" size="125" maxlength="200" />
-	<p>Enter your rss link in this box.</p>
-	<label for="tag-title">Slider direction</label>
+	<p><?php _e('Enter your rss link in this box.', 'rss-news-display'); ?></p>
+	<label for="tag-title"><?php _e('Slider direction', 'rss-news-display'); ?></label>
 	<select name="rssnews_direction3" id="rssnews_direction3">
         <option value='Left' <?php if($rssnews_direction3 == 'Left') { echo 'selected' ; } ?>>Left</option>
         <option value='Right' <?php if($rssnews_direction3 == 'Right') { echo 'selected' ; } ?>>Right</option>
         <option value='Up' <?php if($rssnews_direction3 == 'Up') { echo 'selected' ; } ?>>Up</option>
         <option value='Down' <?php if($rssnews_direction3 == 'Down') { echo 'selected' ; } ?>>Down</option>
       </select>
-	<p>Select your scroll direction</p>
+	<p><?php _e('Select your scroll direction', 'rss-news-display'); ?></p>
 	
-	<h3>Setting 4</h3>
-	<label for="tag-title">Rss link</label>
+	<h3><?php _e('Setting 4', 'rss-news-display'); ?></h3>
+	<label for="tag-title"><?php _e('Rss link', 'rss-news-display'); ?></label>
 	<input name="rssnews_rss4" type="text" id="rssnews_rss4" value="<?php echo $rssnews_rss4; ?>" size="125" maxlength="200" />
-	<p>Enter your rss link in this box.</p>
-	<label for="tag-title">Slider direction</label>
+	<p><?php _e('Enter your rss link in this box.', 'rss-news-display'); ?></p>
+	<label for="tag-title"><?php _e('Slider direction', 'rss-news-display'); ?></label>
 	<select name="rssnews_direction4" id="rssnews_direction4">
         <option value='Left' <?php if($rssnews_direction4 == 'Left') { echo 'selected' ; } ?>>Left</option>
         <option value='Right' <?php if($rssnews_direction4 == 'Right') { echo 'selected' ; } ?>>Right</option>
         <option value='Up' <?php if($rssnews_direction4 == 'Up') { echo 'selected' ; } ?>>Up</option>
         <option value='Down' <?php if($rssnews_direction4 == 'Down') { echo 'selected' ; } ?>>Down</option>
       </select>
-	<p>Select your scroll direction</p>
+	<p><?php _e('Select your scroll direction', 'rss-news-display'); ?></p>
 	
-	<h3>Setting 5</h3>
-	<label for="tag-title">Rss link</label>
+	<h3><?php _e('Setting 5', 'rss-news-display'); ?></h3>
+	<label for="tag-title"><?php _e('Rss link', 'rss-news-display'); ?></label>
 	<input name="rssnews_rss5" type="text" id="rssnews_rss5" value="<?php echo $rssnews_rss5; ?>" size="125" maxlength="200" />
-	<p>Enter your rss link in this box.</p>
-	<label for="tag-title">Slider direction</label>
+	<p><?php _e('Enter your rss link in this box.', 'rss-news-display'); ?></p>
+	<label for="tag-title"><?php _e('Slider direction', 'rss-news-display'); ?></label>
 	<select name="rssnews_direction5" id="rssnews_direction5">
         <option value='Left' <?php if($rssnews_direction5 == 'Left') { echo 'selected' ; } ?>>Left</option>
         <option value='Right' <?php if($rssnews_direction5 == 'Right') { echo 'selected' ; } ?>>Right</option>
         <option value='Up' <?php if($rssnews_direction5 == 'Up') { echo 'selected' ; } ?>>Up</option>
         <option value='Down' <?php if($rssnews_direction5 == 'Down') { echo 'selected' ; } ?>>Down</option>
       </select>
-	<p>Select your scroll direction</p>
+	<p><?php _e('Select your scroll direction', 'rss-news-display'); ?></p>
 	
 	<div style="height:10px;"></div>
 	<input type="hidden" name="rssnews_form_submit" value="yes"/>
-	<input name="rssnews_submit" id="rssnews_submit" class="button add-new-h2" value="Update All Details" type="submit" />
-	<input name="Help" lang="publish" class="button add-new-h2" onclick="window.open('http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/');" value="Help" type="button" />
+	<input name="rssnews_submit" id="rssnews_submit" class="button add-new-h2" value="<?php _e('Update All Details', 'rss-news-display'); ?>" type="submit" />
+	<input name="Help" lang="publish" class="button add-new-h2" onclick="window.open('http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/');" value="<?php _e('Help', 'rss-news-display'); ?>" type="button" />
 	<?php wp_nonce_field('rssnews_form_setting'); ?>
 	</form>
   </div>
-  <h3>Plugin configuration option</h3>
+  <h3><?php _e('Plugin configuration option', 'rss-news-display'); ?></h3>
 	<ol>
-		<li> Drag and drop Rss news display widget into your side bar.</li>
-		<li>Add plugin in the posts or pages using short code.</li>
-		<li>Add directly in to the theme using PHP code.</li>
+		<li><?php _e('Drag and drop Rss news display widget into your side bar.', 'rss-news-display'); ?></li>
+		<li><?php _e('Add plugin in the posts or pages using short code.', 'rss-news-display'); ?></li>
+		<li><?php _e('Add directly in to the theme using PHP code.', 'rss-news-display'); ?></li>
 	</ol>
-  <p class="description">Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/">click here</a></p>
+  <p class="description"> <?php _e('Check official website for more information', 'rss-news-display'); ?> 
+  <a target="_blank" href="http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/"><?php _e('click here', 'rss-news-display'); ?></a></p>
 </div>
     <?php
 }
@@ -258,34 +265,40 @@ function rssnews_shortcode( $atts )
 	}
 	$setting = $atts['setting'];
 	
-	
 	$settings = rssnews_helper($setting);
 	$rss = $settings[0]->rss;
-	$slider = trim($settings[0]->direction);
-	$rssnews = "";
-	$rssnews = $rssnews . '<div id="rssnewssetting'.$setting.'">';
-	$cnt=0;
-	$doc = new DOMDocument();
-	$doc->load( $rss );
-	$item = $doc->getElementsByTagName( "item" );
-	foreach( $item as $item )
-	{
-		$paths = $item->getElementsByTagName( "title" );
-	  	$text = mysql_real_escape_string($paths->item(0)->nodeValue);
-	  	$paths = $item->getElementsByTagName( "link" );
-	  	$link = $paths->item(0)->nodeValue;
-		$rssnews = $rssnews . '<p><a target="_blank" href="'.$link.'">'.$text.'</a></p>';
-		$cnt++;
-	}
-
-	$rssnews = $rssnews . '</div>';
-	$rssnews = $rssnews . '<script type="text/javascript">';
-    $rssnews = $rssnews . 'jQuery(function() {';
-	$rssnews = $rssnews . "jQuery('#rssnewssetting".$setting."').cycle({fx: 'scroll".$slider."',speed: 700,timeout: 5000";
-	$rssnews = $rssnews . '});';
-	$rssnews = $rssnews . '});';
-	$rssnews = $rssnews . '</script>';
+	$content = @file_get_contents($rss);
+	if (strpos($http_response_header[0], "200")) 
+	{ 
+		$slider = trim($settings[0]->direction);
+		$rssnews = "";
+		$rssnews = $rssnews . '<div id="rssnewssetting'.$setting.'">';
+		$cnt=0;
+		$doc = new DOMDocument();
+		$doc->load( $rss );
+		$item = $doc->getElementsByTagName( "item" );
+		foreach( $item as $item )
+		{
+			$paths = $item->getElementsByTagName( "title" );
+			$text = mysql_real_escape_string($paths->item(0)->nodeValue);
+			$paths = $item->getElementsByTagName( "link" );
+			$link = $paths->item(0)->nodeValue;
+			$rssnews = $rssnews . '<p><a target="_blank" href="'.$link.'">'.$text.'</a></p>';
+			$cnt++;
+		}
 	
+		$rssnews = $rssnews . '</div>';
+		$rssnews = $rssnews . '<script type="text/javascript">';
+		$rssnews = $rssnews . 'jQuery(function() {';
+		$rssnews = $rssnews . "jQuery('#rssnewssetting".$setting."').cycle({fx: 'scroll".$slider."',speed: 700,timeout: 5000";
+		$rssnews = $rssnews . '});';
+		$rssnews = $rssnews . '});';
+		$rssnews = $rssnews . '</script>';
+	}
+	else
+	{
+		$rssnews = __('Invalid rss url or broken link.', 'rss-news-display');
+	}
 	return $rssnews;
 }
 
@@ -294,7 +307,7 @@ function rssnews_add_to_menu()
 {
 	if (is_admin()) 
 	{
-		add_options_page('Rss news display', 'Rss news display', 'manage_options', 'rss-news-display', 'rssnews_admin_options' );
+		add_options_page(__('Rss news display', 'rss-news-display'), __('Rss news display', 'rss-news-display'), 'manage_options', 'rss-news-display', 'rssnews_admin_options' );
 	}
 }
 
@@ -318,7 +331,11 @@ function rssnews_add_javascript_files()
 # For widget control
 function rssnews_control() 
 {
-	echo 'Rss news display';
+	echo '<p><b>';
+	_e('Rss news display', 'rss-news-display');
+	echo '.</b> ';
+	_e('Check official website for more information', 'rss-news-display');
+	?> <a target="_blank" href="http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/"><?php _e('click here', 'rss-news-display'); ?></a></p><?php
 }
 
 # For widget
@@ -335,16 +352,23 @@ function rssnews_init()
 {
 	if(function_exists('wp_register_sidebar_widget')) 
 	{
-		wp_register_sidebar_widget('rss-news-display', 'Rss news display', 'rssnews_widget');
+		wp_register_sidebar_widget('rss-news-display', __('Rss news display', 'rss-news-display'), 'rssnews_widget');
 	}
 	
 	if(function_exists('wp_register_widget_control')) 
 	{
-		wp_register_widget_control('rss-news-display', array('Rss news display', 'widgets'), 'rssnews_control');
+		wp_register_widget_control('rss-news-display', array( __('Rss news display', 'rss-news-display'), 'widgets'), 'rssnews_control');
 	} 
 }
 
+# For internationalization
+function rssnews_textdomain() 
+{
+	  load_plugin_textdomain( 'rss-news-display', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
 # Plugin hook
+add_action('plugins_loaded', 'rssnews_textdomain');
 add_shortcode( 'rss-news-display', 'rssnews_shortcode' );
 add_action('admin_menu', 'rssnews_add_to_menu');
 add_action('wp_enqueue_scripts', 'rssnews_add_javascript_files');

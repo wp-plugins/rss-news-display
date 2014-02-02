@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-p
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags:  RSS, display, wordpress, plugin
 Requires at least: 3.3
-Tested up to: 3.6
-Stable tag: 7.0
+Tested up to: 3.8
+Stable tag: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -55,9 +55,9 @@ Q) How can I change the display style?
 
 == Screenshots ==
 
-1. Admin setting : http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
+1. Front Screen : http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 
-1. Click to see live demo : http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
+2. Admin Screen : http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 
 == Upgrade Notice ==
 
@@ -99,6 +99,12 @@ Tested up to 3.6
 Added few security features.
 New admin layout.
 
+= 7.1 =
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (rss-news-display.po) available in the languages folder.
+
 == Changelog ==
 
 = 1.0 =
@@ -138,3 +144,9 @@ From this version we are using existing wordpress jQuery.
 Tested up to 3.6
 Added few security features.
 New admin layout.
+
+= 7.1 =
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (rss-news-display.po) available in the languages folder.
