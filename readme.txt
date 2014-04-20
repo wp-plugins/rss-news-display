@@ -3,10 +3,10 @@ Contributors: www.gopiplus.com, gopiplus
 Donate link: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
-Tags:  RSS, display, wordpress, plugin
+Tags:  rss, news, wordpress, plugin
 Requires at least: 3.3
-Tested up to: 3.8
-Stable tag: 7.1
+Tested up to: 3.9
+Stable tag: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -105,6 +105,11 @@ New admin layout.
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (rss-news-display.po) available in the languages folder.
 
+= 7.2 =
+
+1. Tested up to 3.9
+2. Now it using fetch_feed() wordpress method to load rss feed. (fetch_feed() uses the SimplePie and FeedCache functionality for retrieval and parsing and automatic caching)
+
 == Changelog ==
 
 = 1.0 =
@@ -150,3 +155,8 @@ New admin layout.
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (rss-news-display.po) available in the languages folder.
+
+= 7.2 =
+
+1. Tested up to 3.9
+2. Now it using fetch_feed() wordpress method to load rss feed. (fetch_feed() uses the SimplePie and FeedCache functionality for retrieval and parsing and automatic caching)

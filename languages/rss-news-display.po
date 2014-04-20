@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rss news display 7.1\n"
-"POT-Creation-Date: 2014-02-02 00:38+0800\n"
-"PO-Revision-Date: 2014-02-02 00:38+0800\n"
+"POT-Creation-Date: 2014-04-19 01:53+0800\n"
+"PO-Revision-Date: 2014-04-19 01:54+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,99 +13,99 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../rss-news-display.php:68
+#: ../rss-news-display.php:69
 msgid "RSS url is invalid or broken"
 msgstr ""
 
-#: ../rss-news-display.php:166
+#: ../rss-news-display.php:167
 msgid "Details successfully updated."
 msgstr ""
 
-#: ../rss-news-display.php:171 ../rss-news-display.php:310
-#: ../rss-news-display.php:335 ../rss-news-display.php:355
-#: ../rss-news-display.php:360
+#: ../rss-news-display.php:172 ../rss-news-display.php:318
+#: ../rss-news-display.php:343 ../rss-news-display.php:363
+#: ../rss-news-display.php:368
 msgid "Rss news display"
 msgstr ""
 
-#: ../rss-news-display.php:173
-msgid "Setting 1"
+#: ../rss-news-display.php:174
+msgid "Setting 1 (Default For Widget)"
 msgstr ""
 
-#: ../rss-news-display.php:174 ../rss-news-display.php:187
-#: ../rss-news-display.php:200 ../rss-news-display.php:213
-#: ../rss-news-display.php:226
+#: ../rss-news-display.php:175 ../rss-news-display.php:188
+#: ../rss-news-display.php:201 ../rss-news-display.php:214
+#: ../rss-news-display.php:227
 msgid "Rss link"
 msgstr ""
 
-#: ../rss-news-display.php:176
+#: ../rss-news-display.php:177
 msgid "Enter your rss link in this box. (For widget)"
 msgstr ""
 
-#: ../rss-news-display.php:177 ../rss-news-display.php:190
-#: ../rss-news-display.php:203 ../rss-news-display.php:216
-#: ../rss-news-display.php:229
+#: ../rss-news-display.php:178 ../rss-news-display.php:191
+#: ../rss-news-display.php:204 ../rss-news-display.php:217
+#: ../rss-news-display.php:230
 msgid "Slider direction"
 msgstr ""
 
-#: ../rss-news-display.php:184 ../rss-news-display.php:197
-#: ../rss-news-display.php:210 ../rss-news-display.php:223
-#: ../rss-news-display.php:236
+#: ../rss-news-display.php:185 ../rss-news-display.php:198
+#: ../rss-news-display.php:211 ../rss-news-display.php:224
+#: ../rss-news-display.php:237
 msgid "Select your scroll direction"
 msgstr ""
 
-#: ../rss-news-display.php:186
+#: ../rss-news-display.php:187
 msgid "Setting 2"
 msgstr ""
 
-#: ../rss-news-display.php:189 ../rss-news-display.php:202
-#: ../rss-news-display.php:215 ../rss-news-display.php:228
+#: ../rss-news-display.php:190 ../rss-news-display.php:203
+#: ../rss-news-display.php:216 ../rss-news-display.php:229
 msgid "Enter your rss link in this box."
 msgstr ""
 
-#: ../rss-news-display.php:199
+#: ../rss-news-display.php:200
 msgid "Setting 3"
 msgstr ""
 
-#: ../rss-news-display.php:212
+#: ../rss-news-display.php:213
 msgid "Setting 4"
 msgstr ""
 
-#: ../rss-news-display.php:225
+#: ../rss-news-display.php:226
 msgid "Setting 5"
 msgstr ""
 
-#: ../rss-news-display.php:240
+#: ../rss-news-display.php:241
 msgid "Update All Details"
 msgstr ""
 
-#: ../rss-news-display.php:241
+#: ../rss-news-display.php:242
 msgid "Help"
 msgstr ""
 
-#: ../rss-news-display.php:245
+#: ../rss-news-display.php:246
 msgid "Plugin configuration option"
 msgstr ""
 
-#: ../rss-news-display.php:247
+#: ../rss-news-display.php:248
 msgid "Drag and drop Rss news display widget into your side bar."
 msgstr ""
 
-#: ../rss-news-display.php:248
+#: ../rss-news-display.php:249
 msgid "Add plugin in the posts or pages using short code."
 msgstr ""
 
-#: ../rss-news-display.php:249
+#: ../rss-news-display.php:250
 msgid "Add directly in to the theme using PHP code."
 msgstr ""
 
-#: ../rss-news-display.php:251 ../rss-news-display.php:337
+#: ../rss-news-display.php:252 ../rss-news-display.php:345
 msgid "Check official website for more information"
 msgstr ""
 
-#: ../rss-news-display.php:252 ../rss-news-display.php:338
+#: ../rss-news-display.php:253 ../rss-news-display.php:346
 msgid "click here"
 msgstr ""
 
-#: ../rss-news-display.php:300
+#: ../rss-news-display.php:308
 msgid "Invalid rss url or broken link."
 msgstr ""

@@ -3,11 +3,11 @@
 Plugin Name: Rss news display
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Description: RSS news display is a simple plug-in to show the RSS title with cycle jQuery script. This plug-in retrieve the title and corresponding links from the given RSS feed and setup the news display in the website. Its display one title at a time and cycle all the remaining title in the mentioned location. and we have option to set four different cycle left to right, right to left, down to up, up to down. using this plugin we can easily setup the news display under top menu or footer. the plug-in have separate CSS file to configure the style.
-Author: Gopi.R
-Version: 7.1
+Author: Gopi Ramasamy
+Version: 7.2
 Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
-Tags: RSS, news, display, wordpress, plugin
+Tags: rss, news, wordpress, plugin
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -20,33 +20,35 @@ function RssNewsDisplay($setting)
 	$settings = rssnews_helper($setting);
 	$rss = $settings[0]->rss;
 	$slider = trim($settings[0]->direction);
-	?>
-	<!-- begin rssnewssetting -->
-	<div id="rssnewssetting<?php echo $setting; ?>">
-	<?php
+
 	$xml = "";
 	$cnt=0;
 	$content = @file_get_contents($rss);
 	if (strpos($http_response_header[0], "200")) 
-	{ 
-		$f = fopen( $rss, 'r' );
-		while( $data = fread( $f, 4096 ) ) { $xml .= $data; }
-		fclose( $f );
-		preg_match_all( "/\<item\>(.*?)\<\/item\>/s", $xml, $itemblocks );
-		if ( ! empty($itemblocks) ) 
+	{ 		
+		?>
+		<!-- begin rssnewssetting -->
+		<div id="rssnewssetting<?php echo $setting; ?>">
+		<?php
+		$maxitems = 0;
+		include_once( ABSPATH . WPINC . '/feed.php' );
+		$rss = fetch_feed( $rss );
+		if ( ! is_wp_error( $rss ) )
 		{
-			foreach( $itemblocks[1] as $block )
-			{ 
-				preg_match_all( "/\<title\>(.*?)\<\/title\>/",  $block, $title );
-				preg_match_all( "/\<link\>(.*?)\<\/link\>/", $block, $link );
-				
-				$rssnews_title = $title[1][0];
-				$rssnews_title = mysql_real_escape_string(trim($rssnews_title));
-				$rssnews_link = $link[1][0];
-				$rssnews_link = trim($rssnews_link);
-				?>
-				<p><a target="_blank" href="<?php echo $rssnews_link; ?>"><?php echo $rssnews_title; ?></a></p>
-				<?php 
+			$cnt = 0;
+			$maxitems = $rss->get_item_quantity( 10 ); 
+			$rss_items = $rss->get_items( 0, $maxitems );
+			if ( $maxitems > 0 )
+			{
+				foreach ( $rss_items as $item )
+				{
+					$rssnews_link = $item->get_permalink();
+					$rssnews_title = $item->get_title();
+					?>
+						<p><a target="_blank" href="<?php echo $rssnews_link; ?>"><?php echo $rssnews_title; ?></a></p>
+					<?php 
+					$cnt++;
+				}
 			}
 		}
 		?>
@@ -170,7 +172,7 @@ function rssnews_admin_options()
 	?>
 	<h2><?php _e('Rss news display', 'rss-news-display'); ?></h2>
 	<form name="rssnews_form" method="post" action="">
-	<h3><?php _e('Setting 1', 'rss-news-display'); ?></h3>
+	<h3><?php _e('Setting 1 (Default For Widget)', 'rss-news-display'); ?></h3>
 	<label for="tag-title"><?php _e('Rss link', 'rss-news-display'); ?></label>
 	<input name="rssnews_rss1" type="text" id="rssnews_rss1" value="<?php echo $rssnews_rss1; ?>" size="125" maxlength="200" />
 	<p><?php _e('Enter your rss link in this box. (For widget)', 'rss-news-display'); ?> (Example: http://www.gopiplus.com/extensions/feed)</p>
@@ -273,18 +275,25 @@ function rssnews_shortcode( $atts )
 		$slider = trim($settings[0]->direction);
 		$rssnews = "";
 		$rssnews = $rssnews . '<div id="rssnewssetting'.$setting.'">';
-		$cnt=0;
-		$doc = new DOMDocument();
-		$doc->load( $rss );
-		$item = $doc->getElementsByTagName( "item" );
-		foreach( $item as $item )
+		
+		$maxitems = 0;
+		include_once( ABSPATH . WPINC . '/feed.php' );
+		$rss = fetch_feed( $rss );
+		if ( ! is_wp_error( $rss ) )
 		{
-			$paths = $item->getElementsByTagName( "title" );
-			$text = mysql_real_escape_string($paths->item(0)->nodeValue);
-			$paths = $item->getElementsByTagName( "link" );
-			$link = $paths->item(0)->nodeValue;
-			$rssnews = $rssnews . '<p><a target="_blank" href="'.$link.'">'.$text.'</a></p>';
-			$cnt++;
+			$cnt = 0;
+			$maxitems = $rss->get_item_quantity( 10 ); 
+			$rss_items = $rss->get_items( 0, $maxitems );
+			if ( $maxitems > 0 )
+			{
+				foreach ( $rss_items as $item )
+				{
+					$link = $item->get_permalink();
+					$text = $item->get_title();
+					$rssnews = $rssnews . '<p><a target="_blank" href="'.$link.'">'.$text.'</a></p>';
+					$cnt++;
+				}
+			}
 		}
 	
 		$rssnews = $rssnews . '</div>';
@@ -314,7 +323,7 @@ function rssnews_add_to_menu()
 # Function to call at the time of deactivation
 function rssnews_deactivation() 
 {
-	
+	// No action
 }
 
 # To add javascript and css link in the header
