@@ -37,6 +37,11 @@ RSS news display is a simple plug-in to show the RSS title with cycle jQuery scr
 
 * Short code for posts and pages: Copy and paste the given short code into pages or posts.
 
+= Translators =
+
+* English (en_EN) - [Gopi Ramasamy](http://www.gopiplus.com/)
+* Serbo-Croatian (sr_RS) - [Borisa Djuraskovic] (http://www.webhostinghub.com)
+
 == Installation ==	
 
 [Installation instruction and configuration](http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/)
