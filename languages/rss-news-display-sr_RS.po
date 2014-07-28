@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rss news display 7.1\n"
-"POT-Creation-Date: 2014-06-08 12:49+0800\n"
-"PO-Revision-Date: 2014-06-08 12:49+0800\n"
+"POT-Creation-Date: 2014-07-28 21:49+0800\n"
+"PO-Revision-Date: 2014-07-28 21:49+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../rss-news-display.php:70
+#: ../rss-news-display.php:65
 msgid "RSS url is invalid or broken"
 msgstr "RSS url nije ispravan ili je slomljen"
 
@@ -21,9 +21,8 @@ msgstr "RSS url nije ispravan ili je slomljen"
 msgid "Details successfully updated."
 msgstr "Detalji uspešno updateovani"
 
-#: ../rss-news-display.php:173 ../rss-news-display.php:319
-#: ../rss-news-display.php:344 ../rss-news-display.php:364
-#: ../rss-news-display.php:369
+#: ../rss-news-display.php:173 ../rss-news-display.php:314
+#: ../rss-news-display.php:341
 msgid "Rss news display"
 msgstr "Prikaz Rss vesti "
 
@@ -33,7 +32,7 @@ msgstr "Postavka 1 (Default za Widget)"
 
 #: ../rss-news-display.php:176 ../rss-news-display.php:189
 #: ../rss-news-display.php:202 ../rss-news-display.php:215
-#: ../rss-news-display.php:228
+#: ../rss-news-display.php:228 ../rss-news-display.php:443
 msgid "Rss link"
 msgstr "Rss link"
 
@@ -98,14 +97,31 @@ msgstr "Dodati plugin na postove ili stranice short code."
 msgid "Add directly in to the theme using PHP code."
 msgstr "Dodati direktno na temu korišćenjem PHP koda."
 
-#: ../rss-news-display.php:253 ../rss-news-display.php:346
+#: ../rss-news-display.php:253
 msgid "Check official website for more information"
 msgstr "Proveriti oficijalni website za još info"
 
-#: ../rss-news-display.php:254 ../rss-news-display.php:347
+#: ../rss-news-display.php:254 ../rss-news-display.php:456
 msgid "click here"
 msgstr "klik ovde"
 
-#: ../rss-news-display.php:309
+#: ../rss-news-display.php:304 ../rss-news-display.php:409
 msgid "Invalid rss url or broken link."
 msgstr "Neispravan rss url ili slomljen link."
+
+#: ../rss-news-display.php:340
+msgid ""
+"RSS news display is a simple plug-in to show the RSS title with cycle jQuery."
+msgstr ""
+
+#: ../rss-news-display.php:439
+msgid "Title"
+msgstr ""
+
+#: ../rss-news-display.php:447
+msgid "Direction"
+msgstr "Slajder direkcija"
+
+#: ../rss-news-display.php:449
+msgid "Select"
+msgstr ""
