@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rss news display 7.1\n"
-"POT-Creation-Date: 2014-07-28 21:49+0800\n"
-"PO-Revision-Date: 2014-07-28 21:49+0800\n"
+"POT-Creation-Date: 2014-08-10 10:34+0800\n"
+"PO-Revision-Date: 2014-08-10 10:34+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
 "MIME-Version: 1.0\n"
@@ -27,8 +27,8 @@ msgid "Rss news display"
 msgstr "Prikaz Rss vesti "
 
 #: ../rss-news-display.php:175
-msgid "Setting 1 (Default For Widget)"
-msgstr "Postavka 1 (Default za Widget)"
+msgid "Setting 1"
+msgstr "Postavka 2"
 
 #: ../rss-news-display.php:176 ../rss-news-display.php:189
 #: ../rss-news-display.php:202 ../rss-news-display.php:215
@@ -36,9 +36,11 @@ msgstr "Postavka 1 (Default za Widget)"
 msgid "Rss link"
 msgstr "Rss link"
 
-#: ../rss-news-display.php:178
-msgid "Enter your rss link in this box. (For widget)"
-msgstr "Unesite rss link u ovaj pravougaonik. (za widget)"
+#: ../rss-news-display.php:178 ../rss-news-display.php:191
+#: ../rss-news-display.php:204 ../rss-news-display.php:217
+#: ../rss-news-display.php:230
+msgid "Enter your rss link in this box."
+msgstr "Unesite vaš rss link u ovaj pravougaonik"
 
 #: ../rss-news-display.php:179 ../rss-news-display.php:192
 #: ../rss-news-display.php:205 ../rss-news-display.php:218
@@ -55,11 +57,6 @@ msgstr "Selektujte vašu skrol direkciju"
 #: ../rss-news-display.php:188
 msgid "Setting 2"
 msgstr "Postavka 2"
-
-#: ../rss-news-display.php:191 ../rss-news-display.php:204
-#: ../rss-news-display.php:217 ../rss-news-display.php:230
-msgid "Enter your rss link in this box."
-msgstr "Unesite vaš rss link u ovaj pravougaonik"
 
 #: ../rss-news-display.php:201
 msgid "Setting 3"
@@ -125,3 +122,9 @@ msgstr "Slajder direkcija"
 #: ../rss-news-display.php:449
 msgid "Select"
 msgstr ""
+
+#~ msgid "Setting 1 (Default For Widget)"
+#~ msgstr "Postavka 1 (Default za Widget)"
+
+#~ msgid "Enter your rss link in this box. (For widget)"
+#~ msgstr "Unesite rss link u ovaj pravougaonik. (za widget)"

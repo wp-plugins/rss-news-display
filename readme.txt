@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-p
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags:  rss, news, wordpress, plugin
 Requires at least: 3.3
-Tested up to: 3.9.1
-Stable tag: 7.3
+Tested up to: 4.0
+Stable tag: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -33,14 +33,14 @@ RSS news display is a simple plug-in to show the RSS title with cycle jQuery scr
 
 * Drag and drop the widget: Go to widget page under Appearance menu, Drag and drop Rss news display widget into your side bar.
 
-* Add directly in the theme: Use this code <?php RssNewsDisplay(1); ?> to add this plug-in in to your theme files.
+* Add directly in the theme: Use this code `<?php RssNewsDisplay(1); ?>` to add this plug-in in to your theme files.
 
 * Short code for posts and pages: Copy and paste the given short code into pages or posts.
 
 = Translators =
 
 * English (en_EN) - [Gopi Ramasamy](http://www.gopiplus.com/)
-* Serbo-Croatian (sr_RS) - [Borisa Djuraskovic] (http://www.webhostinghub.com)
+* Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com)
 
 == Installation ==	
 
@@ -122,6 +122,10 @@ Plugin *.po file (rss-news-display.po) available in the languages folder.
 
 If your using widget option and upgrading the plugin, This upgrade will remove the widget from your sidebar. Thus please go to your dashboard widget menu and drag and drop the Rss news display widget again (One time work, not required in future)
 
+= 7.4 =
+
+1. Tested up to 4.0
+
 == Changelog ==
 
 = 1.0 =
@@ -179,3 +183,7 @@ Plugin *.po file (rss-news-display.po) available in the languages folder.
 2. Rss load method has been modified.
 
 If your using widget option and upgrading the plugin, This upgrade will remove the widget from your sidebar. Thus please go to your dashboard widget menu and drag and drop the Rss news display widget again (One time work, not required in future)
+
+= 7.4 =
+
+1. Tested up to 4.0

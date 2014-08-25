@@ -4,7 +4,7 @@ Plugin Name: Rss news display
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Description: RSS news display is a simple plug-in to show the RSS title with cycle jQuery script. This plug-in retrieve the title and corresponding links from the given RSS feed and setup the news display in the website. Its display one title at a time and cycle all the remaining title in the mentioned location. and we have option to set four different cycle left to right, right to left, down to up, up to down. using this plugin we can easily setup the news display under top menu or footer. the plug-in have separate CSS file to configure the style.
 Author: Gopi Ramasamy
-Version: 7.3
+Version: 7.4
 Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags: rss, news, wordpress, plugin
@@ -172,10 +172,10 @@ function rssnews_admin_options()
 	?>
 	<h2><?php _e('Rss news display', 'rss-news-display'); ?></h2>
 	<form name="rssnews_form" method="post" action="">
-	<h3><?php _e('Setting 1 (Default For Widget)', 'rss-news-display'); ?></h3>
+	<h3><?php _e('Setting 1', 'rss-news-display'); ?></h3>
 	<label for="tag-title"><?php _e('Rss link', 'rss-news-display'); ?></label>
 	<input name="rssnews_rss1" type="text" id="rssnews_rss1" value="<?php echo $rssnews_rss1; ?>" size="100" maxlength="1000" />
-	<p><?php _e('Enter your rss link in this box. (For widget)', 'rss-news-display'); ?> (Example: http://www.gopiplus.com/extensions/feed)</p>
+	<p><?php _e('Enter your rss link in this box.', 'rss-news-display'); ?> (Example: http://www.gopiplus.com/extensions/feed)</p>
 	<label for="tag-title"><?php _e('Slider direction', 'rss-news-display'); ?></label>
 	<select name="rssnews_direction1" id="rssnews_direction1">
         <option value='Left' <?php if($rssnews_direction1 == 'Left') { echo 'selected' ; } ?>>Left</option>
