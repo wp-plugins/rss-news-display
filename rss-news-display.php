@@ -4,7 +4,7 @@ Plugin Name: Rss news display
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Description: RSS news display is a simple plug-in to show the RSS title with cycle jQuery script. This plug-in retrieve the title and corresponding links from the given RSS feed and setup the news display in the website. Its display one title at a time and cycle all the remaining title in the mentioned location. and we have option to set four different cycle left to right, right to left, down to up, up to down. using this plugin we can easily setup the news display under top menu or footer. the plug-in have separate CSS file to configure the style.
 Author: Gopi Ramasamy
-Version: 7.5
+Version: 7.6
 Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags: rss, news, wordpress, plugin
