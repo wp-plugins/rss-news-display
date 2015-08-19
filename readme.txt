@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-p
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags:  rss, news, wordpress, plugin
 Requires at least: 3.3
-Tested up to: 4.2.2
-Stable tag: 7.6
+Tested up to: 4.3
+Stable tag: 7.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -134,6 +134,10 @@ If your using widget option and upgrading the plugin, This upgrade will remove t
 
 1. Tested up to 4.2.2
 
+= 7.7 =
+
+1. Tested up to 4.3
+
 == Changelog ==
 
 = 1.0 =
@@ -203,3 +207,7 @@ If your using widget option and upgrading the plugin, This upgrade will remove t
 = 7.6 =
 
 1. Tested up to 4.2.2
+
+= 7.7 =
+
+1. Tested up to 4.3
