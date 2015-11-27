@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-p
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags:  rss, news, wordpress, plugin
 Requires at least: 3.3
-Tested up to: 4.3
-Stable tag: 7.7
+Tested up to: 4.4
+Stable tag: 7.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -41,6 +41,7 @@ RSS news display is a simple plug-in to show the RSS title with cycle jQuery scr
 
 * English (en_EN) - [Gopi Ramasamy](http://www.gopiplus.com/)
 * Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com)
+* Polish (pl_PL) - [Abdul Sattar](https://www.couponmachine.in/)
 
 == Installation ==	
 
@@ -138,6 +139,11 @@ If your using widget option and upgrading the plugin, This upgrade will remove t
 
 1. Tested up to 4.3
 
+= 7.8 =
+
+1. Tested up to 4.4
+2. Text Domain slug has been added for Language Packs.
+
 == Changelog ==
 
 = 1.0 =
@@ -211,3 +217,8 @@ If your using widget option and upgrading the plugin, This upgrade will remove t
 = 7.7 =
 
 1. Tested up to 4.3
+
+= 7.8 =
+
+1. Tested up to 4.4
+2. Text Domain slug has been added for Language Packs.

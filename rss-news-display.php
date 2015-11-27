@@ -4,12 +4,14 @@ Plugin Name: Rss news display
 Plugin URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Description: RSS news display is a simple plug-in to show the RSS title with cycle jQuery script. This plug-in retrieve the title and corresponding links from the given RSS feed and setup the news display in the website. Its display one title at a time and cycle all the remaining title in the mentioned location. and we have option to set four different cycle left to right, right to left, down to up, up to down. using this plugin we can easily setup the news display under top menu or footer. the plug-in have separate CSS file to configure the style.
 Author: Gopi Ramasamy
-Version: 7.7
+Version: 7.8
 Author URI: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/04/03/rss-news-display-wordpress-plugin/
 Tags: rss, news, wordpress, plugin
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: rss-news-display
+Domain Path: /languages
 */
 
 global $wpdb, $wp_version;
@@ -62,7 +64,8 @@ function RssNewsDisplay($setting)
 	}
 	else
 	{
-		_e('RSS url is invalid or broken', 'rss-news-display');
+		$rssnews = $rss->get_error_message();
+		_e($rssnews, 'rss-news-display');
 	}
 }
 
@@ -106,15 +109,21 @@ function rssnews_helper($direction)
 // Plugin installation and default value
 function rssnews_install() 
 {
-	add_option('rssnews_rss1', "http://www.gopiplus.com/work/category/word-press-plug-in/feed/");
+	$rss2_url = get_bloginfo_rss('rss2_url'); 
+
+	add_option('rssnews_rss1', $rss2_url);
 	add_option('rssnews_direction1', "Left");
-	add_option('rssnews_rss2', "http://www.gopiplus.com/extensions/feed");
+	
+	add_option('rssnews_rss2', $rss2_url);
 	add_option('rssnews_direction2', "Right");
-	add_option('rssnews_rss3', "http://www.wordpress.org/news/feed/");
+	
+	add_option('rssnews_rss3', $rss2_url);
 	add_option('rssnews_direction3', "Up");
-	add_option('rssnews_rss4', "http://www.wordpress.org/news/feed/");
+	
+	add_option('rssnews_rss4', $rss2_url);
 	add_option('rssnews_direction4', "Down");
-	add_option('rssnews_rss5', "http://www.wordpress.org/news/feed/");
+	
+	add_option('rssnews_rss5', $rss2_url);
 	add_option('rssnews_direction5', "Left");
 }
 
@@ -301,7 +310,8 @@ function rssnews_shortcode( $atts )
 	}
 	else
 	{
-		$rssnews = __('Invalid rss url or broken link.', 'rss-news-display');
+		$rssnews = $rss->get_error_message();
+		$rssnews = __($rssnews, 'rss-news-display');
 	}
 	return $rssnews;
 }
@@ -406,7 +416,8 @@ class rssnews_widget_register extends WP_Widget
 		}
 		else
 		{
-			$rssnews = __('Invalid rss url or broken link.', 'rss-news-display');
+			$rssnews = $rss->get_error_message();
+			$rssnews = __($rssnews, 'rss-news-display');
 		}
 		echo $rssnews;
 		echo $args['after_widget'];
